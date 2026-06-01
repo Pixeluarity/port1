@@ -1,8 +1,8 @@
 <!-- LOADER -->
-<div id="loader" [class.done]="loaderDone">
-      <div class="loader-name">Mara Voss</div>
-      <div class="loader-bar-wrap"><div class="loader-bar"></div></div>
-    </div>
+<div id="loader" [class.done]="loaderDone()">
+  <div class="loader-name">Mara Voss</div>
+  <div class="loader-bar-wrap"><div class="loader-bar"></div></div>
+</div>
 
 <!-- LIGHTBOX -->
 <div id="lightbox" [class.open]="lightboxOpen" (click)="onLightboxBackdrop($event)">
@@ -20,416 +20,415 @@
   </div>
 </div>
 
+<main class="page-shell" [class.revealed]="loaderDone()">
 <!-- NAV -->
 <nav id="mainNav" [class.scrolled]="navScrolled">
-      <a href="#" class="nav-logo">Mara Voss</a>
-      <ul class="nav-links">
-        <li><a href="#gallery">Portfolio</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#services">Services</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-      <a href="#contact" class="nav-cta">Book a Shoot</a>
-    </nav>
+  <a href="#" class="nav-logo">Mara Voss</a>
+  <ul class="nav-links">
+    <li><a href="#gallery">Portfolio</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="#contact" class="nav-cta">Book a Shoot</a>
+</nav>
 
-    <!-- HERO -->
-    <section class="hero">
-      <div class="hero-mosaic">
-        <div class="mosaic-cell mc-1" data-label="Portrait Series">
-          <div class="photo-portrait"></div>
-          <div class="photo-landscape"></div>
-        </div>
-        <div class="mosaic-cell mc-2" data-label="Landscape">
-          <div class="photo-horizon"></div>
-        </div>
-        <div class="mosaic-cell mc-3" data-label="Still Life"></div>
-        <div class="mosaic-cell mc-4" data-label="Editorial"></div>
-        <div class="mosaic-cell mc-5" data-label="Documentary"></div>
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-mosaic">
+    <div class="mosaic-cell mc-1" data-label="Portrait Series">
+      <div class="photo-portrait"></div>
+      <div class="photo-landscape"></div>
+    </div>
+    <div class="mosaic-cell mc-2" data-label="Landscape">
+      <div class="photo-horizon"></div>
+    </div>
+    <div class="mosaic-cell mc-3" data-label="Still Life"></div>
+    <div class="mosaic-cell mc-4" data-label="Editorial"></div>
+    <div class="mosaic-cell mc-5" data-label="Documentary"></div>
+  </div>
+  <div class="hero-veil"></div>
+  <div class="hero-content">
+    <div class="hero-text">
+      <div class="hero-overline">Visual Artist &amp; Photographer</div>
+      <h1 class="hero-name">Mara<br /><em>Voss</em></h1>
+      <div class="hero-discipline">Portrait · Landscape · Editorial · Film</div>
+    </div>
+    <div class="hero-side">
+      <div class="hero-stat">
+        <div class="hero-stat-num">340+</div>
+        <div class="hero-stat-label">Sessions Completed</div>
       </div>
-      <div class="hero-veil"></div>
-      <div class="hero-content">
-        <div class="hero-text">
-          <div class="hero-overline">Visual Artist &amp; Photographer</div>
-          <h1 class="hero-name">Mara<br /><em>Voss</em></h1>
-          <div class="hero-discipline">Portrait · Landscape · Editorial · Film</div>
-        </div>
-        <div class="hero-side">
-          <div class="hero-stat">
-            <div class="hero-stat-num">340+</div>
-            <div class="hero-stat-label">Sessions Completed</div>
-          </div>
-          <div class="hero-stat">
-            <div class="hero-stat-num">12</div>
-            <div class="hero-stat-label">Years Experience</div>
-          </div>
-          <a href="#gallery" class="hero-scroll">
-            <span class="scroll-line"></span>
-            Scroll
-          </a>
-        </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num">12</div>
+        <div class="hero-stat-label">Years Experience</div>
       </div>
-    </section>
+      <a href="#gallery" class="hero-scroll">
+        <span class="scroll-line"></span>
+        Scroll
+      </a>
+    </div>
+  </div>
+</section>
 
-    <!-- GALLERY -->
-    <section class="gallery-section" id="gallery">
+<!-- GALLERY -->
+<section class="gallery-section" id="gallery">
+  <div class="section-eyebrow reveal">
+    <div class="eyebrow-rule"></div>
+    <span class="eyebrow-label">Selected Work</span>
+  </div>
+  <h2 class="section-title reveal">Captured <em>Moments</em></h2>
+
+  <div class="gallery-grid">
+    <div
+      class="gallery-item"
+      data-num="01"
+      data-title="Golden Hour Portraits"
+      data-cat="Portrait"
+      (click)="openLightbox($event)"
+    >
+      <div class="gallery-bg gb-1"></div>
+      <div class="gallery-overlay">
+        <div class="gallery-info">
+          <div class="gallery-cat">Portrait Series</div>
+          <div class="gallery-name">Golden Hour</div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="gallery-item"
+      data-num="02"
+      data-title="Arctic Silence"
+      data-cat="Landscape"
+      (click)="openLightbox($event)"
+    >
+      <div class="gallery-bg gb-2"></div>
+      <div class="gallery-overlay">
+        <div class="gallery-info">
+          <div class="gallery-cat">Landscape</div>
+          <div class="gallery-name">Arctic Silence</div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="gallery-item"
+      data-num="03"
+      data-title="Still Life No. 7"
+      data-cat="Still Life"
+      (click)="openLightbox($event)"
+    >
+      <div class="gallery-bg gb-3"></div>
+      <div class="gallery-overlay">
+        <div class="gallery-info">
+          <div class="gallery-cat">Still Life</div>
+          <div class="gallery-name">Object No. 7</div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="gallery-item"
+      data-num="04"
+      data-title="Editorial — Vogue Italy"
+      data-cat="Editorial"
+      (click)="openLightbox($event)"
+    >
+      <div class="gallery-bg gb-4"></div>
+      <div class="gallery-overlay">
+        <div class="gallery-info">
+          <div class="gallery-cat">Editorial</div>
+          <div class="gallery-name">Vogue Italia</div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="gallery-item"
+      data-num="05"
+      data-title="Crimson Study"
+      data-cat="Fine Art"
+      (click)="openLightbox($event)"
+    >
+      <div class="gallery-bg gb-5"></div>
+      <div class="gallery-overlay">
+        <div class="gallery-info">
+          <div class="gallery-cat">Fine Art</div>
+          <div class="gallery-name">Crimson Study</div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="gallery-item"
+      data-num="06"
+      data-title="Night City"
+      data-cat="Urban"
+      (click)="openLightbox($event)"
+    >
+      <div class="gallery-bg gb-6"></div>
+      <div class="gallery-overlay">
+        <div class="gallery-info">
+          <div class="gallery-cat">Urban</div>
+          <div class="gallery-name">Night City</div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="gallery-item"
+      data-num="07"
+      data-title="Desert Light"
+      data-cat="Landscape"
+      (click)="openLightbox($event)"
+    >
+      <div class="gallery-bg gb-7"></div>
+      <div class="gallery-overlay">
+        <div class="gallery-info">
+          <div class="gallery-cat">Landscape</div>
+          <div class="gallery-name">Desert Light</div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="gallery-item"
+      data-num="08"
+      data-title="Into the Forest"
+      data-cat="Nature"
+      (click)="openLightbox($event)"
+    >
+      <div class="gallery-bg gb-8"></div>
+      <div class="gallery-overlay">
+        <div class="gallery-info">
+          <div class="gallery-cat">Nature</div>
+          <div class="gallery-name">Into the Forest</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PHILOSOPHY / ABOUT -->
+<section class="philosophy-section" id="about">
+  <div class="phil-left reveal">
+    <blockquote class="phil-quote">
+      Light is not something you capture. It's something you wait for, and recognize when it
+      arrives.
+    </blockquote>
+    <div class="phil-attr">— Mara Voss, 2019</div>
+  </div>
+  <div class="phil-right">
+    <div class="phil-name-block reveal">
+      <div class="phil-name">Mara Voss</div>
+      <div class="phil-title">Photographer &amp; Visual Artist</div>
+    </div>
+    <p class="phil-bio reveal">
+      Based between Berlin and Cairo, I work across portrait, landscape, editorial, and documentary
+      photography. My work explores the quiet tension between stillness and motion — the fraction of
+      a second where truth is visible before the world resumes.
+      <br /><br />
+      Published in Vogue, Aperture, and Le Monde. Awards include the World Press Photo Award and
+      Prix de la Photographie Paris. Available for editorial commissions, commercial campaigns, and
+      private sessions worldwide.
+    </p>
+    <div class="phil-specialties reveal">
+      <span class="specialty-tag">Portrait</span>
+      <span class="specialty-tag">Editorial</span>
+      <span class="specialty-tag">Landscape</span>
+      <span class="specialty-tag">Documentary</span>
+      <span class="specialty-tag">Film Photography</span>
+      <span class="specialty-tag">Commercial</span>
+      <span class="specialty-tag">Fine Art Print</span>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services-section" id="services">
+  <div class="section-eyebrow reveal">
+    <div class="eyebrow-rule"></div>
+    <span class="eyebrow-label">Services</span>
+  </div>
+  <h2 class="section-title reveal">What I <em>Offer</em></h2>
+
+  <div class="services-grid">
+    <div class="service-item reveal reveal-delay-1">
+      <div class="service-num">01</div>
+      <div class="service-name">Portrait Sessions</div>
+      <p class="service-desc">
+        Individual, couple, and family portraits. Studio or on-location. Full retouching and
+        high-resolution delivery within 7 days.
+      </p>
+      <div class="service-price">From $480</div>
+    </div>
+    <div class="service-item reveal reveal-delay-2">
+      <div class="service-num">02</div>
+      <div class="service-name">Editorial &amp; Fashion</div>
+      <p class="service-desc">
+        Campaign photography for fashion brands, magazines, and creative agencies. Conceptual art
+        direction available on request.
+      </p>
+      <div class="service-price">From $1,200 / day</div>
+    </div>
+    <div class="service-item reveal reveal-delay-3">
+      <div class="service-num">03</div>
+      <div class="service-name">Videography</div>
+      <p class="service-desc">
+        Short-form cinematic videos for brands, events, and artists. Colour graded, sound mixed, and
+        delivered in all formats.
+      </p>
+      <div class="service-price">From $950 / day</div>
+    </div>
+    <div class="service-item reveal reveal-delay-4">
+      <div class="service-num">04</div>
+      <div class="service-name">Fine Art Prints</div>
+      <p class="service-desc">
+        Limited-edition archival pigment prints on Hahnemühle paper, signed and numbered. Available
+        in multiple sizes.
+      </p>
+      <div class="service-price">From $280 / print</div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials-section">
+  <div class="section-eyebrow reveal">
+    <div class="eyebrow-rule"></div>
+    <span class="eyebrow-label">Client Words</span>
+  </div>
+  <h2 class="section-title reveal">What They <em>Said</em></h2>
+  <div class="testimonials-track">
+    <div class="testimonial-card reveal reveal-delay-1">
+      <div class="testimonial-stars">★★★★★</div>
+      <p class="testimonial-text">
+        Mara captured something in our campaign that we'd struggled to articulate for months. The
+        images went straight to our brand guidelines — they defined the aesthetic going forward.
+      </p>
+      <div class="testimonial-author">
+        <div class="author-avatar">E</div>
+        <div>
+          <div class="author-name">Elena Richter</div>
+          <div class="author-role">Creative Director, Atelier Noir</div>
+        </div>
+      </div>
+    </div>
+    <div class="testimonial-card reveal reveal-delay-2">
+      <div class="testimonial-stars">★★★★★</div>
+      <p class="testimonial-text">
+        Our wedding photographs are extraordinary. She disappeared into the background and came back
+        with moments we didn't know existed. We'll treasure these forever.
+      </p>
+      <div class="testimonial-author">
+        <div class="author-avatar">T</div>
+        <div>
+          <div class="author-name">Thomas &amp; Lena Okafor</div>
+          <div class="author-role">Wedding Clients</div>
+        </div>
+      </div>
+    </div>
+    <div class="testimonial-card reveal reveal-delay-3">
+      <div class="testimonial-stars">★★★★★</div>
+      <p class="testimonial-text">
+        We commissioned a landscape series for our hotel's public spaces. The prints are stunning —
+        guests stop and ask about them every day. Highly recommended for any brand project.
+      </p>
+      <div class="testimonial-author">
+        <div class="author-avatar">S</div>
+        <div>
+          <div class="author-name">Sofía Méndez</div>
+          <div class="author-role">General Manager, Casa Luz Hotel</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact-section" id="contact">
+  <div class="contact-grid">
+    <div class="contact-left">
       <div class="section-eyebrow reveal">
         <div class="eyebrow-rule"></div>
-        <span class="eyebrow-label">Selected Work</span>
+        <span class="eyebrow-label">Get In Touch</span>
       </div>
-      <h2 class="section-title reveal">Captured <em>Moments</em></h2>
+      <h2 class="contact-heading reveal">Let's create<br />something <em>lasting.</em></h2>
+      <p class="contact-sub reveal">
+        Whether it's a portrait session, editorial campaign, or a fine art commission — I'd love to
+        hear about your vision.
+      </p>
+      <div class="contact-details reveal">
+        <div class="contact-detail">
+          <div class="detail-icon">✉</div>
+          <div class="detail-info">
+            <div class="detail-label">Email</div>
+            <div class="detail-val">hello@maravoss.com</div>
+          </div>
+        </div>
+        <div class="contact-detail">
+          <div class="detail-icon">📍</div>
+          <div class="detail-info">
+            <div class="detail-label">Based In</div>
+            <div class="detail-val">Berlin, DE · Cairo, EG</div>
+          </div>
+        </div>
+        <div class="contact-detail">
+          <div class="detail-icon">📅</div>
+          <div class="detail-info">
+            <div class="detail-label">Availability</div>
+            <div class="detail-val">Booking August 2026 onward</div>
+          </div>
+        </div>
+      </div>
+    </div>
 
-      <div class="gallery-grid">
-        <div
-          class="gallery-item"
-          data-num="01"
-          data-title="Golden Hour Portraits"
-          data-cat="Portrait"
-          (click)="openLightbox($event)"
+    <div class="contact-right reveal">
+      <div class="contact-form">
+        <div class="cf-row">
+          <div class="cf-group">
+            <label>Your Name</label>
+            <input type="text" placeholder="Full name" />
+          </div>
+          <div class="cf-group">
+            <label>Email</label>
+            <input type="email" placeholder="you@email.com" />
+          </div>
+        </div>
+        <div class="cf-group">
+          <label>Session Type</label>
+          <select>
+            <option value="">Select a service...</option>
+            <option>Portrait Session</option>
+            <option>Editorial / Fashion</option>
+            <option>Videography</option>
+            <option>Fine Art Print</option>
+            <option>Other / Enquiry</option>
+          </select>
+        </div>
+        <div class="cf-group">
+          <label>Your Vision</label>
+          <textarea
+            placeholder="Tell me about your project, mood, location, timeline..."
+          ></textarea>
+        </div>
+        <button
+          type="button"
+          class="btn-contact"
+          (click)="sendEnquiry()"
+          [style.opacity]="contactBtnOpacity"
+          [style.background]="contactBtnBackground"
         >
-          <div class="gallery-bg gb-1"></div>
-          <div class="gallery-overlay">
-            <div class="gallery-info">
-              <div class="gallery-cat">Portrait Series</div>
-              <div class="gallery-name">Golden Hour</div>
-            </div>
-          </div>
-        </div>
-        <div
-          class="gallery-item"
-          data-num="02"
-          data-title="Arctic Silence"
-          data-cat="Landscape"
-          (click)="openLightbox($event)"
-        >
-          <div class="gallery-bg gb-2"></div>
-          <div class="gallery-overlay">
-            <div class="gallery-info">
-              <div class="gallery-cat">Landscape</div>
-              <div class="gallery-name">Arctic Silence</div>
-            </div>
-          </div>
-        </div>
-        <div
-          class="gallery-item"
-          data-num="03"
-          data-title="Still Life No. 7"
-          data-cat="Still Life"
-          (click)="openLightbox($event)"
-        >
-          <div class="gallery-bg gb-3"></div>
-          <div class="gallery-overlay">
-            <div class="gallery-info">
-              <div class="gallery-cat">Still Life</div>
-              <div class="gallery-name">Object No. 7</div>
-            </div>
-          </div>
-        </div>
-        <div
-          class="gallery-item"
-          data-num="04"
-          data-title="Editorial — Vogue Italy"
-          data-cat="Editorial"
-          (click)="openLightbox($event)"
-        >
-          <div class="gallery-bg gb-4"></div>
-          <div class="gallery-overlay">
-            <div class="gallery-info">
-              <div class="gallery-cat">Editorial</div>
-              <div class="gallery-name">Vogue Italia</div>
-            </div>
-          </div>
-        </div>
-        <div
-          class="gallery-item"
-          data-num="05"
-          data-title="Crimson Study"
-          data-cat="Fine Art"
-          (click)="openLightbox($event)"
-        >
-          <div class="gallery-bg gb-5"></div>
-          <div class="gallery-overlay">
-            <div class="gallery-info">
-              <div class="gallery-cat">Fine Art</div>
-              <div class="gallery-name">Crimson Study</div>
-            </div>
-          </div>
-        </div>
-        <div
-          class="gallery-item"
-          data-num="06"
-          data-title="Night City"
-          data-cat="Urban"
-          (click)="openLightbox($event)"
-        >
-          <div class="gallery-bg gb-6"></div>
-          <div class="gallery-overlay">
-            <div class="gallery-info">
-              <div class="gallery-cat">Urban</div>
-              <div class="gallery-name">Night City</div>
-            </div>
-          </div>
-        </div>
-        <div
-          class="gallery-item"
-          data-num="07"
-          data-title="Desert Light"
-          data-cat="Landscape"
-          (click)="openLightbox($event)"
-        >
-          <div class="gallery-bg gb-7"></div>
-          <div class="gallery-overlay">
-            <div class="gallery-info">
-              <div class="gallery-cat">Landscape</div>
-              <div class="gallery-name">Desert Light</div>
-            </div>
-          </div>
-        </div>
-        <div
-          class="gallery-item"
-          data-num="08"
-          data-title="Into the Forest"
-          data-cat="Nature"
-          (click)="openLightbox($event)"
-        >
-          <div class="gallery-bg gb-8"></div>
-          <div class="gallery-overlay">
-            <div class="gallery-info">
-              <div class="gallery-cat">Nature</div>
-              <div class="gallery-name">Into the Forest</div>
-            </div>
-          </div>
-        </div>
+          <span>{{ contactBtnLabel }}</span>
+        </button>
       </div>
-    </section>
+    </div>
+  </div>
+</section>
 
-    <!-- PHILOSOPHY / ABOUT -->
-    <section class="philosophy-section" id="about">
-      <div class="phil-left reveal">
-        <blockquote class="phil-quote">
-          Light is not something you capture. It's something you wait for, and recognize when it
-          arrives.
-        </blockquote>
-        <div class="phil-attr">— Mara Voss, 2019</div>
-      </div>
-      <div class="phil-right">
-        <div class="phil-name-block reveal">
-          <div class="phil-name">Mara Voss</div>
-          <div class="phil-title">Photographer &amp; Visual Artist</div>
-        </div>
-        <p class="phil-bio reveal">
-          Based between Berlin and Cairo, I work across portrait, landscape, editorial, and
-          documentary photography. My work explores the quiet tension between stillness and motion —
-          the fraction of a second where truth is visible before the world resumes.
-          <br /><br />
-          Published in Vogue, Aperture, and Le Monde. Awards include the World Press Photo Award and
-          Prix de la Photographie Paris. Available for editorial commissions, commercial campaigns,
-          and private sessions worldwide.
-        </p>
-        <div class="phil-specialties reveal">
-          <span class="specialty-tag">Portrait</span>
-          <span class="specialty-tag">Editorial</span>
-          <span class="specialty-tag">Landscape</span>
-          <span class="specialty-tag">Documentary</span>
-          <span class="specialty-tag">Film Photography</span>
-          <span class="specialty-tag">Commercial</span>
-          <span class="specialty-tag">Fine Art Print</span>
-        </div>
-      </div>
-    </section>
-
-    <!-- SERVICES -->
-    <section class="services-section" id="services">
-      <div class="section-eyebrow reveal">
-        <div class="eyebrow-rule"></div>
-        <span class="eyebrow-label">Services</span>
-      </div>
-      <h2 class="section-title reveal">What I <em>Offer</em></h2>
-
-      <div class="services-grid">
-        <div class="service-item reveal reveal-delay-1">
-          <div class="service-num">01</div>
-          <div class="service-name">Portrait Sessions</div>
-          <p class="service-desc">
-            Individual, couple, and family portraits. Studio or on-location. Full retouching and
-            high-resolution delivery within 7 days.
-          </p>
-          <div class="service-price">From $480</div>
-        </div>
-        <div class="service-item reveal reveal-delay-2">
-          <div class="service-num">02</div>
-          <div class="service-name">Editorial &amp; Fashion</div>
-          <p class="service-desc">
-            Campaign photography for fashion brands, magazines, and creative agencies. Conceptual
-            art direction available on request.
-          </p>
-          <div class="service-price">From $1,200 / day</div>
-        </div>
-        <div class="service-item reveal reveal-delay-3">
-          <div class="service-num">03</div>
-          <div class="service-name">Videography</div>
-          <p class="service-desc">
-            Short-form cinematic videos for brands, events, and artists. Colour graded, sound mixed,
-            and delivered in all formats.
-          </p>
-          <div class="service-price">From $950 / day</div>
-        </div>
-        <div class="service-item reveal reveal-delay-4">
-          <div class="service-num">04</div>
-          <div class="service-name">Fine Art Prints</div>
-          <p class="service-desc">
-            Limited-edition archival pigment prints on Hahnemühle paper, signed and numbered.
-            Available in multiple sizes.
-          </p>
-          <div class="service-price">From $280 / print</div>
-        </div>
-      </div>
-    </section>
-
-    <!-- TESTIMONIALS -->
-    <section class="testimonials-section">
-      <div class="section-eyebrow reveal">
-        <div class="eyebrow-rule"></div>
-        <span class="eyebrow-label">Client Words</span>
-      </div>
-      <h2 class="section-title reveal">What They <em>Said</em></h2>
-      <div class="testimonials-track">
-        <div class="testimonial-card reveal reveal-delay-1">
-          <div class="testimonial-stars">★★★★★</div>
-          <p class="testimonial-text">
-            Mara captured something in our campaign that we'd struggled to articulate for months.
-            The images went straight to our brand guidelines — they defined the aesthetic going
-            forward.
-          </p>
-          <div class="testimonial-author">
-            <div class="author-avatar">E</div>
-            <div>
-              <div class="author-name">Elena Richter</div>
-              <div class="author-role">Creative Director, Atelier Noir</div>
-            </div>
-          </div>
-        </div>
-        <div class="testimonial-card reveal reveal-delay-2">
-          <div class="testimonial-stars">★★★★★</div>
-          <p class="testimonial-text">
-            Our wedding photographs are extraordinary. She disappeared into the background and came
-            back with moments we didn't know existed. We'll treasure these forever.
-          </p>
-          <div class="testimonial-author">
-            <div class="author-avatar">T</div>
-            <div>
-              <div class="author-name">Thomas &amp; Lena Okafor</div>
-              <div class="author-role">Wedding Clients</div>
-            </div>
-          </div>
-        </div>
-        <div class="testimonial-card reveal reveal-delay-3">
-          <div class="testimonial-stars">★★★★★</div>
-          <p class="testimonial-text">
-            We commissioned a landscape series for our hotel's public spaces. The prints are
-            stunning — guests stop and ask about them every day. Highly recommended for any brand
-            project.
-          </p>
-          <div class="testimonial-author">
-            <div class="author-avatar">S</div>
-            <div>
-              <div class="author-name">Sofía Méndez</div>
-              <div class="author-role">General Manager, Casa Luz Hotel</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- CONTACT -->
-    <section class="contact-section" id="contact">
-      <div class="contact-grid">
-        <div class="contact-left">
-          <div class="section-eyebrow reveal">
-            <div class="eyebrow-rule"></div>
-            <span class="eyebrow-label">Get In Touch</span>
-          </div>
-          <h2 class="contact-heading reveal">Let's create<br />something <em>lasting.</em></h2>
-          <p class="contact-sub reveal">
-            Whether it's a portrait session, editorial campaign, or a fine art commission — I'd love
-            to hear about your vision.
-          </p>
-          <div class="contact-details reveal">
-            <div class="contact-detail">
-              <div class="detail-icon">✉</div>
-              <div class="detail-info">
-                <div class="detail-label">Email</div>
-                <div class="detail-val">hello@maravoss.com</div>
-              </div>
-            </div>
-            <div class="contact-detail">
-              <div class="detail-icon">📍</div>
-              <div class="detail-info">
-                <div class="detail-label">Based In</div>
-                <div class="detail-val">Berlin, DE · Cairo, EG</div>
-              </div>
-            </div>
-            <div class="contact-detail">
-              <div class="detail-icon">📅</div>
-              <div class="detail-info">
-                <div class="detail-label">Availability</div>
-                <div class="detail-val">Booking August 2026 onward</div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="contact-right reveal">
-          <div class="contact-form">
-            <div class="cf-row">
-              <div class="cf-group">
-                <label>Your Name</label>
-                <input type="text" placeholder="Full name" />
-              </div>
-              <div class="cf-group">
-                <label>Email</label>
-                <input type="email" placeholder="you@email.com" />
-              </div>
-            </div>
-            <div class="cf-group">
-              <label>Session Type</label>
-              <select>
-                <option value="">Select a service...</option>
-                <option>Portrait Session</option>
-                <option>Editorial / Fashion</option>
-                <option>Videography</option>
-                <option>Fine Art Print</option>
-                <option>Other / Enquiry</option>
-              </select>
-            </div>
-            <div class="cf-group">
-              <label>Your Vision</label>
-              <textarea
-                placeholder="Tell me about your project, mood, location, timeline..."
-              ></textarea>
-            </div>
-            <button
-              type="button"
-              class="btn-contact"
-              (click)="sendEnquiry()"
-              [style.opacity]="contactBtnOpacity"
-              [style.background]="contactBtnBackground"
-            >
-              <span>{{ contactBtnLabel }}</span>
-            </button>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- FOOTER -->
-    <footer>
-      <span class="footer-brand">Mara Voss</span>
-      <span class="footer-copy">© 2026 — All Rights Reserved</span>
-      <div class="footer-socials">
-        <a href="#" class="footer-social">ig</a>
-        <a href="#" class="footer-social">be</a>
-        <a href="#" class="footer-social">vs</a>
-        <a href="#" class="footer-social">li</a>
-      </div>
-    </footer>
-
+<!-- FOOTER -->
+<footer>
+  <span class="footer-brand">Mara Voss</span>
+  <span class="footer-copy">© 2026 — All Rights Reserved</span>
+  <div class="footer-socials">
+    <a href="#" class="footer-social">ig</a>
+    <a href="#" class="footer-social">be</a>
+    <a href="#" class="footer-social">vs</a>
+    <a href="#" class="footer-social">li</a>
+  </div>
+</footer>
+</main>

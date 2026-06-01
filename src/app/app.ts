@@ -6,6 +6,7 @@ import {
   PLATFORM_ID,
   ViewEncapsulation,
   inject,
+  signal,
 } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 
@@ -19,8 +20,10 @@ import { isPlatformBrowser } from '@angular/common';
 export class App implements AfterViewInit, OnDestroy {
   private readonly platformId = inject(PLATFORM_ID);
   private revealObserver?: IntersectionObserver;
+  private loaderTimer?: ReturnType<typeof setTimeout>;
 
-  loaderDone = false;
+  /** Signal so async dismiss updates the template without waiting for scroll. */
+  loaderDone = signal(false);
   navScrolled = false;
   lightboxOpen = false;
   lightboxTitle = '';
@@ -34,28 +37,49 @@ export class App implements AfterViewInit, OnDestroy {
       return;
     }
 
-    setTimeout(() => {
-      this.loaderDone = true;
-    }, 2400);
+    document.body.classList.add('is-loading');
 
-    if (typeof IntersectionObserver !== 'undefined') {
-      const revEls = document.querySelectorAll('.reveal');
-      this.revealObserver = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              entry.target.classList.add('visible');
-            }
-          });
-        },
-        { threshold: 0.1 },
-      );
-      revEls.forEach((el) => this.revealObserver!.observe(el));
+    const minLoaderMs = 2400;
+    const startedAt = Date.now();
+
+    const dismissLoader = () => {
+      const remaining = Math.max(0, minLoaderMs - (Date.now() - startedAt));
+      this.loaderTimer = setTimeout(() => {
+        this.loaderDone.set(true);
+        document.body.classList.remove('is-loading');
+      }, remaining);
+    };
+
+    if (document.readyState === 'complete') {
+      dismissLoader();
+    } else {
+      window.addEventListener('load', dismissLoader, { once: true });
     }
-  }
 
+    if (typeof IntersectionObserver === 'undefined') {
+      return;
+    }
+
+    const revEls = document.querySelectorAll('.reveal');
+    this.revealObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          }
+        });
+      },
+      { threshold: 0.1 },
+    );
+    revEls.forEach((el) => this.revealObserver!.observe(el));
+  }
+    
   ngOnDestroy(): void {
+    clearTimeout(this.loaderTimer);
     this.revealObserver?.disconnect();
+    if (isPlatformBrowser(this.platformId)) {
+      document.body.classList.remove('is-loading');
+    }
   }
 
   @HostListener('window:scroll')
@@ -80,8 +104,7 @@ export class App implements AfterViewInit, OnDestroy {
     }
 
     this.lightboxTitle = `${cat}  ·  ${title}`;
-    this.lightboxImage =
-      bgEl.style.backgroundImage || getComputedStyle(bgEl).backgroundImage;
+    this.lightboxImage = bgEl.style.backgroundImage || getComputedStyle(bgEl).backgroundImage;
     this.lightboxOpen = true;
   }
 
